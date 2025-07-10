@@ -1,40 +1,64 @@
-EMAIL SPAM DETECTION
+# 📧 Email Spam Detection (Forked & Improved)
 
-![20945480](https://user-images.githubusercontent.com/118047264/226919729-d56fbf6c-ce33-41cb-b2ae-dad1141238e7.jpg)
+A refactored and enhanced version of the original [kanagalingamcse/email-spam-detection](https://github.com/kanagalingamcse/email-spam-detection) project—improved preprocessing, clarified outputs, and added vectorizer/model export.
 
-One of the primary methods for spam mail detection is email filtering. It involves categorize incoming emails into spam and non-spam. Machine learning algorithms can be trained to filter out spam mails based on their content and metadata.
+---------------------------------------------------------------------------------------
 
-DESCRIPTION
+## 🔍 Features & Enhancements
 
-• The project code completely done using Python
+- ✅ Improved text preprocessing (optimized stop-word filtering)
+- 🧠 Three ML models:
+  - Multinomial Naive Bayes (best performer)
+  - Random Forest & Decision Tree
+- 📊 Plots: Confusion matrices with labelled axes
+- 💾 Exports:
+  - `MNB.pkl`, `RFC.pkl`, `DTC.pkl` (trained models)
+  - `vectorizer.pkl` (CountVectorizer)
+- 💬 Custom test message at end of script to demo predictions
 
-• Dataset taken from kaggle, link: https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset/code
+-------------------------------------------------------------------------------------------
 
-• Required packages installed, that are pandas, re, nltk, sklearn, seaborn, matplotlib, tqdm, time
+## 🗂️ File Overview
 
-• Data Preprocessing, NLP, Classification and Classification report these are the operations performed
+| File | Description |
+|------|-------------|
+| `email_spam_detection.ipynb` | Jupyter Notebook with full workflow |
+| `email_spam_detection.py`    | Script version for local execution |
+| `MNB.pkl`, `RFC.pkl`, `DTC.pkl` | Serialized ML models |
+| `vectorizer.pkl`             | Serialized feature vectorizer |
+| `requirements.txt`           | Python dependencies |
 
-• Logistic Regression used as classification model for this project to get high accuracy for the text data perfomed from NLP operations.
+You only need to modify the `.ipynb` or `.py` to update preprocessing, models, or add new tests. All other files are ready to use.
 
-• Visualising confusion matrix by heatmap to get clear performance of the classification model
+---
 
-• Finally, Classification report has been executed.
+## ⚙️ How to Use It
+
+1. Clone this updated repo:
+   git clone https://github.com/park-bit/Email-Spam-Detection-fork.git
+   cd Email-Spam-Detection-fork
+   
+2. Install the dependencies:
+   pip install -r requirements.txt
+
+3. Run training and saving models:
+   python email_spam_detection.py
+
+4. Test a custom message:
+
+Edit the test_message = [...] variable at the end of email_spam_detection.py, run the script, and get your prediction!
+
+-------------------------------------------------------------------------------------
+Credits
+This project is based on the original work by kanagalingamcse. Enhancements and exports added in this fork by me :)
 
 
-Other Key steps to Spam Mail Detection:
+--------------------------------------------------------------------------------------
 
-• Email Filtering: One of the primary methods for spam mail detection is email filtering. It involves categorize incoming emails into spam and non-spam. Machine learning algorithms can be trained to filter out spam mails based on their content and metadata.
+### 🧾 Summary
+- You don’t need to modify any other file.
+- Update your `README.md` with the above snippet, commit and push.
+- If you'd like deployment (Flask/Streamlit) next, I can help with that.
 
-• Natural Language Processing: Natural Language Processing (NLP) is a technique that enables machines to understand and process human language. It plays a crucial role in spam detection, as it helps in extracting meaningful features from emails such as subject, body, and attachments.
-
-• Text Classification: Text classification is a supervised learning technique used for spam detection. It involves labelling emails as spam or non-spam based on their features, such as the presence of certain keywords, tone, or grammar.
-
-• Feature Engineering: Feature engineering is the process of selecting relevant features from the email to classify it as spam or non-spam. It involves extracting features such as the sender's email address, the presence of certain words or phrases, and the length of the email.
-
-• Supervised Learning: Supervised learning is a technique that involves training the model on labelled data to predict the labels of new, unlabeled data. It is widely used in spam detection for text classification tasks. 
-
-• Unsupervised Learning: Unsupervised learning is a technique used to find hidden patterns in the data without the need for labelled data. It can be used for anomaly detection, clustering, and association rule mining.
-
-• Deep Learning: Deep learning is a subfield of machine learning that involves training deep neural networks with multiple hidden layers to learn complex features from the data. It has shown great promise in spam detection tasks.
-
-• Neural Networks: Neural networks are a type of deep learning model inspired by the human brain. They can be trained to extract meaningful features from emails and classify them as spam or non-spam.
+Let me know!
+::contentReference[oaicite:0]{index=0}
