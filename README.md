@@ -55,10 +55,3 @@ This project is based on the original work by kanagalingamcse. Enhancements and 
 
 --------------------------------------------------------------------------------------
 
-### 🧾 Summary
-- You don’t need to modify any other file.
-- Update your `README.md` with the above snippet, commit and push.
-- If you'd like deployment (Flask/Streamlit) next, I can help with that.
-
-Let me know!
-
