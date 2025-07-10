@@ -57,6 +57,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 
+from sklearn.metrics import classification_report
+
 """**Reading informations in the Dataset**"""
 
 from google.colab import drive
@@ -104,11 +106,12 @@ spam['label'].value_counts().plot(kind='bar')
 
 ps = PorterStemmer()
 corpus = []
-for i in range(0, len(spam)):
-    review = re.sub('[^a-zA-Z]', ' ', spam['message'][i])
+for i, message in enumerate(spam['message']):
+    review = re.sub('[^a-zA-Z]', ' ', message)
     review = review.lower()
     review = review.split()
-    review = [ps.stem(word) for word in review if not word in stopwords.words('english')]
+    stop_words = set(stopwords.words('english'))
+    review = [ps.stem(word) for word in review if word not in stop_words]
     review = ' '.join(review)
     corpus.append(review)
 
@@ -177,11 +180,14 @@ print("Confusion Matrix: ")
 print(confusion_matrix(Y_test, pred3))
 print("Accuracy: ", accuracy_score(Y_test, pred3))
 
-from sklearn.metrics import confusion_matrix
+
 cm = confusion_matrix(Y_test, pred3)
 
 import seaborn as sns
-sns.heatmap(cm, annot=True)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Not Spam', 'Spam'], yticklabels=['Not Spam', 'Spam'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix - MultinomialNB')
 
 report1 = classification_report(Y_test, pred1)
 print("Classification Report for RFC \n", report1)
@@ -204,3 +210,14 @@ pickle.dump(model2, open(filename, 'wb'))
 filename = "MNB.pkl"
 pickle.dump(model3, open(filename, 'wb'))
 print("Saved all Models")
+
+with open("vectorizer.pkl", "wb") as f:
+    pickle.dump(cv, f)
+
+# Test the model on a custom message
+test_message = ["Congratulations! You've won a free ticket. Call now!"]
+test_data = cv.transform(test_message).toarray()
+prediction = model3.predict(test_data)
+# Map prediction back to label for clarity and robustness
+label_map = {0: 'Not Spam', 1: 'Spam'}
+print("Prediction:", label_map.get(prediction[0], "Unknown"))
